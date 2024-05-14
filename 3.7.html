@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker game</title>
+</head>
+<body>
+<button id="addBtn">Click me!</button>
+<script>''javascript
+document.getElementByld('addBtn').addEventListener('click', function() {
+const input1 Value =
+document.getElementByld('input1').value;
+const input2Value =
+document.getElementByld('input2').value;
+
+const itemList = document.getElementByld('itemList');
+
+const newltem = document.createElement('li');
+newltem.textContent = input1 Value + "-" +
+
+input2Value;
+itemList.appendChild(newNewltem);
+});
+document.getElementByld('deleteBtn').addEventListener
+('click', function() {
+const itemList = document.getElementByld(itemList');
+if (itemList.children.length > 0) {
+itemList.removeChild(itemList.lastChild);
+});
+    font-family: Arial, sans-serif;
+}
+input{
+    margin: 10px;
+}
+</script>
+</body>
+</html>
