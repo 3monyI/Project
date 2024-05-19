@@ -2,36 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Clicker game</title>
+    <title>Score Game</title>
 </head>
 <body>
-<button id="addBtn">Click me!</button>
-<script>''javascript
-document.getElementByld('addBtn').addEventListener('click', function() {
-const input1 Value =
-document.getElementByld('input1').value;
-const input2Value =
-document.getElementByld('input2').value;
+<button id="scoreButton">Click me!</button>
+<p>Score: <span id="scoreDisplay">0</span></p>
+<img id="avatar" src="avatar1.png" alt="Avatar">
+<!-- Shop Items -->
+<button id="upgrade1" onclick="buyUpgrade(1)">Upgrade to 2 points per click (Cost: 50)</button>
+<button id="upgrade2" onclick="buyUpgrade(2)">Upgrade to double score per click (Cost: 100)</button>
+<!-- Restart Button -->
+<button id="restartButton">Restart</button>
+<!-- Win Message -->
+<div id="winMessage" style="display:none;">You Won!</div>
+```
 
-const itemList = document.getElementByld('itemList');
-
-const newltem = document.createElement('li');
-newltem.textContent = input1 Value + "-" +
-
-input2Value;
-itemList.appendChild(newNewltem);
-});
-document.getElementByld('deleteBtn').addEventListener
-('click', function() {
-const itemList = document.getElementByld(itemList');
-if (itemList.children.length > 0) {
-itemList.removeChild(itemList.lastChild);
-});
-    font-family: Arial, sans-serif;
+<script>
+let score = 0;
+let scorePerClick = 1;
+function updateScore() {
+score += scorePerClick;
+checkAvatarChange();
+checkWinCondition();
+document.getElementById('scoreDisplay').innerText = score;
 }
-input{
-    margin: 10px;
+function checkAvatarChange() {
+if (score >= 100) {
+document.getElementById('avatar').src = 'avatar2.png';
 }
+if (score >= 200) {
+document.getElementById('avatar').src = 'avatar3.png';
+}
+if (score >= 300) {
+document.getElementById('avatar').src = 'avatar4.png';
+}
+}
+function buyUpgrade(type) {
+if (type === 1 && score >= 50) {
+score -= 50;
+scorePerClick = 2;
+} else if (type === 2 && score >= 100) {
+score -= 100;
+scorePerClick *= 2; // This can be very powerful, be cautious with balance
+}
+document.getElementById('scoreDisplay').innerText = score;
+}
+function checkWinCondition() {
+if (score >= 500) {
+document.getElementById('winMessage').style.display = 'block';
+document.getElementById('scoreButton').style.display = 'none';
+document.getElementById('upgrade1').style.display = 'none';
+document.getElementById('upgrade2')..style.display = 'none';
+}
+}
+function resetGame() {
+score = 0;
+scorePerClick = 1;
+document.getElementById('score
 </script>
+</body>
+</html>
 </body>
 </html>
